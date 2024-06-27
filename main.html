@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bootstrap Gallery</title>
+  <title>Bootstrap Gallery with Carousel on Click</title>
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <!-- Lightbox CSS -->
@@ -13,7 +13,8 @@
     .card {
       border-radius: 10px;
       margin-bottom: 20px;
-      border: none;
+      border: none; /* Remove default border */
+      cursor: pointer; /* Change cursor to pointer on hover */
     }
     .card img {
       border-radius: 10px 10px 0 0;
@@ -31,10 +32,8 @@
   <div class="row">
     <!-- Card 1 -->
     <div class="col-md-4">
-      <div class="card">
-        <a href="https://storage.googleapis.com/acciojob-open-file-collections/image1.jpg" data-toggle="lightbox" data-gallery="gallery" data-title="Card 1">
-          <img src="https://storage.googleapis.com/acciojob-open-file-collections/image1.jpg" class="card-img-top" alt="Card 1">
-        </a>
+      <div class="card" data-toggle="modal" data-target="#imageModal" data-slide-to="0">
+        <img src="https://storage.googleapis.com/acciojob-open-file-collections/image1.jpg" class="card-img-top" alt="Card 1">
         <div class="card-body">
           <h6 class="card-title">Card 1</h6>
           <p class="card-text">Details about Card 1.</p>
@@ -44,10 +43,8 @@
     
     <!-- Card 2 -->
     <div class="col-md-4">
-      <div class="card">
-        <a href="https://storage.googleapis.com/acciojob-open-file-collections/image2.jpg" data-toggle="lightbox" data-gallery="gallery" data-title="Card 2">
-          <img src="https://storage.googleapis.com/acciojob-open-file-collections/image2.jpg" class="card-img-top" alt="Card 2">
-        </a>
+      <div class="card" data-toggle="modal" data-target="#imageModal" data-slide-to="1">
+        <img src="https://storage.googleapis.com/acciojob-open-file-collections/image2.jpg" class="card-img-top" alt="Card 2">
         <div class="card-body">
           <h6 class="card-title">Card 2</h6>
           <p class="card-text">Details about Card 2.</p>
@@ -57,10 +54,8 @@
     
     <!-- Card 3 -->
     <div class="col-md-4">
-      <div class="card">
-        <a href="https://storage.googleapis.com/acciojob-open-file-collections/image3.jpg" data-toggle="lightbox" data-gallery="gallery" data-title="Card 3">
-          <img src="https://storage.googleapis.com/acciojob-open-file-collections/image3.jpg" class="card-img-top" alt="Card 3">
-        </a>
+      <div class="card" data-toggle="modal" data-target="#imageModal" data-slide-to="2">
+        <img src="https://storage.googleapis.com/acciojob-open-file-collections/image3.jpg" class="card-img-top" alt="Card 3">
         <div class="card-body">
           <h6 class="card-title">Card 3</h6>
           <p class="card-text">Details about Card 3.</p>
@@ -68,45 +63,8 @@
       </div>
     </div>
 
-    <!-- Card 4 -->
-    <div class="col-md-4">
-      <div class="card">
-        <a href="https://storage.googleapis.com/acciojob-open-file-collections/image4.jpg" data-toggle="lightbox" data-gallery="gallery" data-title="Card 4">
-          <img src="https://storage.googleapis.com/acciojob-open-file-collections/image4.jpg" class="card-img-top" alt="Card 4">
-        </a>
-        <div class="card-body">
-          <h6 class="card-title">Card 4</h6>
-          <p class="card-text">Details about Card 4.</p>
-        </div>
-      </div>
-    </div>
+    <!-- Repeat similar structure for other cards -->
 
-    <!-- Card 5 -->
-    <div class="col-md-4">
-      <div class="card">
-        <a href="https://storage.googleapis.com/acciojob-open-file-collections/image5.jpg" data-toggle="lightbox" data-gallery="gallery" data-title="Card 5">
-          <img src="https://storage.googleapis.com/acciojob-open-file-collections/image5.jpg" class="card-img-top" alt="Card 5">
-        </a>
-        <div class="card-body">
-          <h6 class="card-title">Card 5</h6>
-          <p class="card-text">Details about Card 5.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Card 6 -->
-    <div class="col-md-4">
-      <div class="card">
-        <a href="https://storage.googleapis.com/acciojob-open-file-collections/image6.jpg" data-toggle="lightbox" data-gallery="gallery" data-title="Card 6">
-          <img src="https://storage.googleapis.com/acciojob-open-file-collections/image6.jpg" class="card-img-top" alt="Card 6">
-        </a>
-        <div class="card-body">
-          <h6 class="card-title">Card 6</h6>
-          <p class="card-text">Details about Card 6.</p>
-        </div>
-      </div>
-    </div>
-    
   </div><!-- /.row -->
 </div><!-- /.container -->
 
@@ -115,6 +73,72 @@
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.min.js"></script>
+
+<!-- Modal for Carousel -->
+<div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div id="imageCarousel" class="carousel slide" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <!-- Indicators will be generated dynamically -->
+          </ol>
+          <div class="carousel-inner">
+            <!-- Carousel items will be generated dynamically -->
+          </div>
+          <a class="carousel-control-prev" href="#imageCarousel" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#imageCarousel" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Function to populate modal carousel with images
+  function populateCarousel(images) {
+    var carouselIndicators = $('#imageCarousel .carousel-indicators');
+    var carouselInner = $('#imageCarousel .carousel-inner');
+    
+    carouselIndicators.empty();
+    carouselInner.empty();
+    
+    images.forEach(function(image, index) {
+      var indicatorClass = (index === 0) ? 'active' : '';
+      var itemClass = (index === 0) ? 'carousel-item active' : 'carousel-item';
+      
+      carouselIndicators.append(`<li data-target="#imageCarousel" data-slide-to="${index}" class="${indicatorClass}"></li>`);
+      carouselInner.append(`
+        <div class="${itemClass}">
+          <img src="${image}" class="d-block w-100" alt="Image ${index + 1}">
+        </div>
+      `);
+    });
+  }
+  
+  $(document).ready(function() {
+    $('.card').on('click', function() {
+      var images = [];
+      // Collect images from all cards
+      $('.card img').each(function() {
+        images.push($(this).attr('src'));
+      });
+      // Populate carousel with collected images
+      populateCarousel(images);
+      // Show modal
+      $('#imageModal').modal('show');
+      // Set the slide index to the clicked card's image index
+      var slideIndex = $(this).data('slide-to');
+      $('#imageCarousel').carousel(parseInt(slideIndex));
+    });
+  });
+</script>
 
 </body>
 </html>
